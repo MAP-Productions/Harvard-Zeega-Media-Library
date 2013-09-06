@@ -1,0 +1,68 @@
+.layers {
+    min-width: 170px;
+    position: absolute;
+    right: 0;
+
+    .ZEEGA-layer-list {
+        color: white;
+        font-size: 12px;
+        width: 150px;
+        background: rgba(0,0,0,0.25);
+        .transition( background, .5s);
+        padding: 10px;
+        margin-bottom: 2px;
+        cursor: move;
+
+        &.active {
+            background: orangered;
+            // background: rgba(255,69,0,0.75);
+            .transition( background, .5s);
+        }
+
+        &[data-continued="true"] .continued,
+        &[data-persists="true"] .persists {
+            background: orangered;
+        }
+
+    }
+
+    .layer-title {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        display: inline-block;
+        text-overflow: ellipsis;
+    }
+
+    .action-bg {
+        margin: 1px;
+        border-radius: 2px;
+        padding: 0px 2px 2px 0;
+        &:hover {
+            background: rgba(0,0,0,0.1);
+        }
+    }
+
+    .layer-list-bottom {
+        margin-top: 5px;
+    }
+}
+
+.visual-element {
+    position: absolute;
+    outline: 2px solid transparent;
+    .transition( outline, 0.5s );
+
+    &.active {
+        outline: 2px solid orangered;
+        .transition( outline, 0.5s );
+    }
+}
+
+.visual-target {
+    // position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

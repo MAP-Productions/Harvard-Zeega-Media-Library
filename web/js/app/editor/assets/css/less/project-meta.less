@@ -1,0 +1,93 @@
+.project-meta {
+    background: url(../img/tiny-stripes.png);
+    position: relative;
+    height: 125px;
+    color: white;
+
+    .ZEEGA-project-cover {
+        background: white;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .project-meta-upper {
+        position: absolute;
+        background: rgba(0,0,0,0.75);
+        width: 100%;
+
+        .ZEEGA-project-title {
+            padding: 5px 10px;
+            width: 200px;
+        }
+    }
+
+    .project-meta-lower {
+        position: absolute;
+        bottom: 0;
+        background: rgba(0,0,0,0.75);
+        width: 100%;
+
+        .ZEEGA-project-share {
+            padding: 5px 10px;
+        }
+
+        .social-share {
+            opacity: 1;
+
+            &[data-itemid=null] {
+                opacity: 0.2;
+            }
+        }
+
+        .hidden-drawer {
+            display: none;
+            &.open {
+                display: inline-block;
+            }
+        }
+
+    }
+
+    .preview {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        height: 25px;
+        width: 104px;
+        background: rgba(0,0,0,0.5);
+        border-radius: 5px;
+        padding: 5px;
+
+        .preview-text{
+            float: left;
+            color: white;
+            font-size: 1.2em;
+            margin-left: 4px;
+            padding: 2px;
+        }
+        i {
+            float:left;
+        }
+    }
+    
+}
+
+.play-zcon,
+.pause-zcon {
+    background-image: url('@{image-folder}/playpause.png');
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 25px;
+    width: 25px; 
+}
+.pause-zcon {
+    background-position: -25px 0px;
+}

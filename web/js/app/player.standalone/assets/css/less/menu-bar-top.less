@@ -1,0 +1,77 @@
+.ZEEGA-player-menu-bar {
+
+	background: rgba(0,0,0,0.5);
+	display: none;
+	pointer-events:auto;
+	position: absolute;
+	width: 100%;
+	z-index: 11;
+
+	.ZEEGA-standalone-logo {
+		background: url("../img/zeega-logo-header.png");
+		height: 11px;
+		margin: 5px;
+		width: 62px;
+		display: inline-block;
+	}
+
+	.menu-bar-left {
+		float:left;
+	}
+
+	.menu-bar-right {
+		float:right;
+	}
+
+	.ZEEGA-menu-bar {
+
+		.menu-bar-title {
+			padding: 10px;
+			color:white;
+
+			.project-title {
+				cursor: pointer;
+			}
+		}
+
+		.sequence-description {
+			opacity: 0.5;
+		}
+
+		.sequence-author {
+			opacity: 0.5;
+		}
+
+		&>li {
+			float:left;
+
+			border-right: 1px solid rgba(0,0,0,0.5);
+			&:last-child {
+				border-right:none;
+			}
+
+			&.slide-menu {
+				display:none;
+				a {
+					float: left;
+				}
+			}
+
+			&>a {
+				padding: 10px;
+				display: block;
+
+				&:hover {
+					// background: rgba(0,0,0,0.1);
+				}
+			}
+
+		}
+	}
+
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}

@@ -1,0 +1,92 @@
+.soundtrack {
+    height: 30px;
+    background: url(../img/tiny-stripes.png);
+    box-shadow: inset 0 0 27px black;
+    font-size: 23px;
+    text-align: center;
+    text-shadow: 0 2px 0 black;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    color: white;
+    position: relative;
+
+    .elapsed {
+        background: orangered;
+        position: absolute;
+        height: 100%;
+        width: 0;
+        top: 0;
+        left: 0;
+        opacity: 0.75;
+    }
+    .soundtrack-waveform {
+        background: transparent;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+    }
+
+    .soundtrack-info {
+        font-size: 14px;
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+        pointer-events: none;
+    }
+
+    .soundtrack-controls {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        height: 100%;
+
+        a {
+            position: relative;
+            display: inline-block;
+            height: 100%;
+            padding: 0 5px;
+        }
+
+        i {
+            vertical-align: middle;
+        }
+    }
+
+    .soundtrack-controls,
+    .soundtrack-info {
+        opacity: 0.5;
+        .transition( opacity, 2s );
+        -webkit-transition-delay: 2s;
+    }
+    &:hover {
+        .soundtrack-controls,
+        .soundtrack-info {
+            opacity: 1;
+            .transition( opacity, 0.5s );
+        }
+    }
+
+    .instructions-1 {
+        display: block;
+    }
+    .instructions-2 {
+        display: none;
+    }
+
+    &.can-drop {
+        border-top: 1px solid limegreen;
+        border-bottom: 1px solid limegreen;
+
+        .instructions-1 {
+            display: none;
+        }
+        .instructions-2 {
+            display: block;
+        }
+    }
+}

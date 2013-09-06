@@ -1,0 +1,24 @@
+<div class="frame-menu">
+    <a href="#"><i class="icon-edit icon-white"></i></a>
+    <ul class="submenu">
+        <li class="menu-head">
+            Page Options
+        </li>
+        <li class="divider"></li>
+        <li>
+            <a href="#" class="action" data-action="deleteFrame"><i class="icon-remove"></i> delete</a>
+        </li>
+    </ul>
+</div>
+
+<a href="#" class="frame-thumb"
+    data-id="<%= id %>"
+    style="
+        <% if( thumbnail_url !== "" ) { %>
+            background: url(<%= thumbnail_url %>) no-repeat center center; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        <% } %>
+"></a>

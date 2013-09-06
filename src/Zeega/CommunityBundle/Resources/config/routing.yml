@@ -1,0 +1,11 @@
+ZeegaCommunityBundle_home:
+    pattern:  /
+    defaults: { _controller: ZeegaCommunityBundle:Community:home }
+
+ZeegaCommunityBundle_user:
+    pattern:  /profile/{id}
+    defaults: { _controller: ZeegaCommunityBundle:Community:user }
+
+ZeegaCommunityBundle_dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: ZeegaCommunityBundle:Community:dashboard}

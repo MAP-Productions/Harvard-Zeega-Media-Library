@@ -1,0 +1,37 @@
+api_layers:
+    type: rest
+    resource: Zeega\ApiBundle\Controller\LayersController
+    name_prefix: api_
+    prefix:   api    
+
+api_sequences:
+    type: rest
+    resource: Zeega\ApiBundle\Controller\SequencesController
+    name_prefix: api_
+    prefix:   api    
+
+api_projects:
+    type: rest
+    resource: Zeega\ApiBundle\Controller\ProjectsController
+    name_prefix: api_
+    prefix:   api    
+
+items:
+    type:     rest
+    prefix:   api
+    resource: Zeega\ApiBundle\Controller\ItemsController
+
+api_frames:
+    type:     rest
+    prefix:   api
+    resource: Zeega\ApiBundle\Controller\FramesController
+
+api_users:
+    type: rest
+    prefix: api
+    resource: Zeega\ApiBundle\Controller\UsersController
+
+api_schedule:
+    type: rest
+    prefix: api
+    resource: Zeega\ApiBundle\Controller\ScheduleController

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Zeega Editor</title>
+
+  <!-- Zeega metatags -->
+
+  <meta name="zeega" content="zeega-editor"
+    data-root=""
+    data-hostname="//dev.zeega.org/"
+    data-user-id="36"
+    data-project-id="1234"
+    
+    data-api-root="joseph/web/"
+  />
+
+  <script>
+
+  window.userProjects = "\x5B\x7B\x22id\x22\x3A5027,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A5025,\x22title\x22\x3A\x22Jolly\x20Moon\x22\x7D,\x7B\x22id\x22\x3A5011,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A5010,\x22title\x22\x3A\x22Broke\x20Dog\x22\x7D,\x7B\x22id\x22\x3A5004,\x22title\x22\x3A\x22sun\x20spot\x22\x7D,\x7B\x22id\x22\x3A5002,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A4995,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A4992,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A4973,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A4966,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A4961,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A4948,\x22title\x22\x3A\x22popups\x20everywhere\x21\x22\x7D,\x7B\x22id\x22\x3A4940,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A4938,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A4935,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A4931,\x22title\x22\x3A\x22Untitled\x20Zeega\x22\x7D,\x7B\x22id\x22\x3A4928,\x22title\x22\x3A\x22editor\x20test\x22\x7D\x5D";
+
+  </script>
+
+
+  <!-- Application styles. -->
+
+  <!--(if target release)>
+  <link rel="stylesheet" href="release.css">
+  <!(endif)-->
+
+  <!--(if target debug)>
+  <link rel="stylesheet" href="debug.css">
+  <!(endif)-->
+
+  <!--(if target dummy)><!-->
+  <!--
+  <link rel="stylesheet" href="vendor/zeegaplayer/dist/debug/css/zeega.css">
+-->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!--<!(endif)-->
+</head>
+
+<body>
+  <!-- Main container. -->
+  <div role="main" id="main"></div>
+
+  <!-- Application source. -->
+
+  <!--(if target release)>
+  <script data-main="/app/config" src="source.min.js"></script>
+  <!(endif)-->
+
+<!--
+  <script src="dist/debug/require.js"></script>
+->
+  <!--(if target dummy)><!-->
+
+    <script data-main="/app/config" src="/vendor/js/libs/require.js"></script>
+<!--
+    <script src="/dist/debug/require.js"></script>
+-->
+  <!--<!(endif)-->
+</body>
+</html>

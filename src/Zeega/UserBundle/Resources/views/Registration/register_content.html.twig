@@ -1,0 +1,155 @@
+
+{% block stylesheets %}	
+	<link rel="shortcut icon" type="image/x-icon" href="http://zeega.org/images/zeega.ico"> 
+	
+	<style type="text/css">
+	
+		/*
+			Background image code lives here, not in CSS, because this is specific to each page
+			and could be made dynamic too (i.e. randomly picking a different image each load)
+			quite easily. Exposing the code here should be helpful.
+		*/
+	
+		html { 
+		background: url({{asset("images/background.jpg")}}) no-repeat center center fixed; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		}
+	
+	</style>
+
+	{% if app.environment == 'dev' %}
+		<link rel="stylesheet/less" type="text/css" href="{{ asset('css/less/community/bootstrap.less')}}">
+		<script type="text/javascript" src="{{ asset('js//lib/less-1.3.0.min.js')}}"></script>
+		<script> /* Provisory for dev environment: */ localStorage.clear(); </script>
+	{% else %}
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/zeega.community.css')}}">
+	{% endif %}
+
+	<link href='http://fonts.googleapis.com/css?family=Podkova:400,700' rel='stylesheet' type='text/css'> <!-- Including Google's Font -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" language="Javascript" src="{{ asset('js/lib/less-1.3.0.min.js') }}"></script>
+{% endblock stylesheets %}
+
+{% block body %}
+<!-- Background Color Div - creates the transparent layer over the background image -->
+	<div id="background-color-lightest">
+	</div>
+	<!-- Background Color Div ends -->
+
+	
+	<div class="container new-section">
+	
+		<div class="row">
+	
+			<div class="page-intro span11">
+			
+				<h1>Sign up for the HELP Platform</h1>
+							
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	<!-- Page Intro Ends -->
+	<!-- Page Content Begins -->
+	
+	<div class="container new-section">
+	
+		<div class="row">
+		
+			<div class="span7" style="width:980px;">
+
+
+				<div style="float:left;">
+
+
+				<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="form-vertical">
+					<fieldset>
+						<div class="control-group">			
+					    {{ form_errors(form) }}
+						<div class="row">
+					    	<div class="span3">
+								<label class="control-label" for="name"><h4>Name</h4></label>
+							</div>
+							<div class="span4">
+								<div class="required"></div>
+								<div class="controls">
+						    		{{ form_errors(form.display_name) }}
+						    		{{ form_widget(form.display_name, { 'attr': {'class': 'input-xlarge-custom'} }) }}
+								</div>
+							</div>
+						</div>
+						<div class="row">
+					    	<div class="span3">
+						    	<label class="control-label" for="email"><h4>Email</h4></label>
+							</div>
+							<div class="span4">
+								<div class="required"></div>			
+								<div class="controls">
+						    		{{ form_errors(form.email) }}
+						    		{{ form_widget(form.email, { 'attr': {'class': 'input-xlarge-custom'} }) }}
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+					    	<div class="span3">
+						    	<label class="control-label" for="password"><h4>Password</h4></label>
+							</div>
+							<div class="span4">
+								<div class="required"></div>			
+								<div class="controls">
+									{{ form_errors(form.plainPassword.first) }}
+						    		{{ form_widget(form.plainPassword.first, { 'attr': {'class': 'input-xlarge-custom'} }) }}
+								</div>
+							</div>
+						</div>
+						<div class="row">
+					    	<div class="span3">
+						    	<label class="control-label" for="password-verification"><h4>Verify Password</h4></label>
+							</div>
+							<div class="span4">
+								<div class="required"></div>			
+								<div class="controls">
+									{{ form_errors(form.plainPassword.second) }}
+						    		{{ form_widget(form.plainPassword.second, { 'attr': {'class': 'input-xlarge-custom'} }) }}
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span3">
+								<br/>
+							</div>
+						</div>
+					    {{ form_rest(form) }}
+
+					    <div class="row">
+							<div class="span4 offset3">
+								<button type="submit" class="btn btn-success btn-custom"><h4>Join</h4></button>
+							</div>
+						</div>
+					 </div>
+				</fieldset>
+				</form>
+
+				</div>
+				<div style="clear:both;"></div>
+			
+			</div>
+			
+			<!-- Form Ends -->
+			
+			
+		
+		</div>
+	
+	</div>
+	
+	<!-- Page Content Ends -->
+	
+{% endblock %}	
+

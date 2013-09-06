@@ -1,0 +1,23 @@
+<ul class="ZEEGA-menu-bar menu-bar-left">
+    <li>
+        <a href="http://www.zeega.com/" class="ZEEGA-standalone-logo" style="padding:7px;"></a>
+    </li>
+    <li class="menu-bar-title">
+        <span class="project-title"><%= title %></span>
+        <span class="sequence-description"></span>
+        <span class="sequence-author">
+            by <a href="http:<%= hostname %><%= directory %>user/<%= user_id %>" data-bypass="true" ><%= authors %></a>
+        </span>
+    </li>
+</ul>
+<ul class="ZEEGA-menu-bar menu-bar-right">
+    <li><a id="project-share" href="#">share</a></li>
+    <li class="slide-menu">
+        <a href="https://twitter.com/intent/tweet?original_referer=http://www.zeega.com/<%= item_id %>&text=Zeega%20Project%3A%20<%= title %> &url=http://www.zeega.com/<%= item_id %>" target="blank"><i class="zsocial-twitter"></i></a>
+        <a href="http://www.facebook.com/sharer.php?u=http://www.zeega.com/<%= item_id %>" target="blank"><i class="zsocial-facebook"></i></a>
+        <a href="http://www.tumblr.com/share" target="blank"><i class="zsocial-tumblr"></i></a>
+        <a href="mailto:friend@example.com?subject=Check out this Zeega!&body=http://www.zeega.com/<%= item_id %>"><i class="zsocial-email"></i></a>
+    </li>
+    <!--<li><a id="project-credits" href="#"><i class="icon-align-justify icon-white"></i></a></li>-->
+    <li><a id="project-fullscreen-toggle" href="#"><i class="icon-resize-full icon-white"></i></a></li>
+</ul>

@@ -1,0 +1,101 @@
+.item-dragging {
+    height: 75px;
+    width: 75px;
+    opacity: 0.75;
+}
+
+.media-drawer {
+
+    .empty-collection {
+        background: rgba(0,0,0,0.5);
+        color: orangered;
+        padding: 20px;
+        text-align: center;
+        font-family: futura;
+        font-size: 13px;
+    }
+
+    .ZEEGA-items {
+        overflow: auto;
+    }
+
+    .item {
+
+        &>a {
+            cursor: move;
+        }
+        float: left;
+        .item-thumb {
+            height: 49px;
+            width: 49px;
+
+            .thumb-title {
+                position: absolute;
+                font-size: 11px;
+                word-wrap: break-word;
+                width: 49px;
+                text-shadow: 1px 1px 0px black;
+                height: 49px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-align: left;
+                color: orangered;
+                line-height: 12px;
+            }
+        }
+
+        .item-title {
+            display: none;
+        }
+    }
+
+    .grid {
+        box-shadow: inset 0 0 24px orangered;
+    }
+    .list {
+        box-shadow: none;
+    }
+
+    &.list {
+        .grid {
+            box-shadow: none;
+        }
+        .list {
+            box-shadow: inset 0 0 24px orangered;
+        }
+        .item {
+            float: none;
+            border-bottom: 1px solid rgba(0,0,0,0.25);
+            .clearfix;
+
+            .item-thumb {
+                float: left;
+                height: 24px;
+                width: 24px;
+                margin-right: 10px;
+
+                .thumb-title {
+                    display: none;
+                }
+            }
+
+            .item-title {
+                display: inline-block;
+                float: left;
+                color: #ddd;
+                font-size: 12px;
+               
+                .item-title-text {
+                    width: 225px;
+                    position: relative;
+                    top: 5px;
+                    display: inline-block;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+
+}

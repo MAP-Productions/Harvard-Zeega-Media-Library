@@ -1,0 +1,42 @@
+html {
+	background: black;
+	font-family: 'Helvetica', sans-serif;
+}
+
+#main {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	z-index: 10;
+	overflow: hidden;
+
+	#overlays {
+		position: absolute;
+		z-index: 2;
+		background:none !important;
+	}
+	#player {
+		height:100%;
+		position: absolute;
+		width:100%;
+		z-index: 1;
+		box-shadow: -50px 0 50px black;
+	}
+}
+
+
+a {
+	color: white;
+	text-decoration: none;
+	&:link {
+
+	}
+	&:hover {
+		color: orangered;
+	}
+	&:visited {
+	}
+	&:active {
+		color: orangered;
+	}
+}

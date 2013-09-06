@@ -1,0 +1,36 @@
+<div id="scroller">
+    <ul class="underlay-menu">
+        <li class="header">
+            <div><%= title %></div>
+            <div class="coffin-author">by <%= authors %></div>
+        </li>
+        <li><a href="https://mobile.twitter.com/compose/tweet?status=http://www.zeega.com/<%= id %>" target="blank"><i class="zsocial-twitter"></i>  Share on Twitter</a></li>
+        <li><a href="http://m.facebook.com/sharer.php?u=http://www.zeega.com/<%= id %>&t=<%= title %> by <%= authors %>" target="blank"><i class="zsocial-facebook"></i>  Share on Facebook</a></li>
+        <li><a href="mailto:friend@example.com?subject=Check out this Zeega!&body=http://www.zeega.com/<%= id %>"><i class="zsocial-email"></i>  Share on Email</a></li>
+        <li class="spacer"></li>
+        <li class="header">Credits</li>
+        <% _.each( frames, function( frame ) { %>
+            <% _.each( frame.layers, function( layer ) { %>
+                <% if (layer.type != "Link") { %>
+                    <li class="underlay-citation">
+                        <a href="<%= layer.attr.attribution_uri %>" target="blank">
+                            <i class="icon-<%= layer.type.toLowerCase() %> icon-white"></i> <% if ( layer.attr.title === "" ) { %>[untitled]<% } else { %><%= layer.attr.title %><% } %>
+                        </a>
+                    </li>
+                <% } %>
+            <% }) %>
+        <% }) %>
+        <li class="spacer"></li>
+        <li><a href="http://www.zeega.com/" target="blank">Explore the Zeegaverse</a></li>
+    </ul>
+</div>
+<div class="bg" style="
+    background: url(<%= cover_image %>);
+    background-position: 50% 50%;
+    background-repeat: no-repeat no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+"></div>

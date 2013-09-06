@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+   <meta name="zeega" content="zeega-home"
+    data-root=""
+    data-api="http://zeega.com/api/"
+   />
+
+
+
+
+
+
+
+  <title>Zeega Home</title>
+
+  <!-- Application styles. -->
+
+  <!--(if target release)>
+  <link rel="stylesheet" href="release.css">
+  <!(endif)-->
+
+  <!--(if target debug)>
+  <link rel="stylesheet" href="debug.css">
+  <!(endif)-->
+
+  <!--(if target dummy)><!-->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!--<!(endif)-->
+
+
+
+</head>
+
+<body>
+
+  <div class="nav">
+    <div class="row">       
+          <div class="span6">
+              <div class="branding"
+                  <a href="/"><img src="assets/img/zeegaRedWhite.png" alt="zeega-logo" width="134" height="43"></a>
+                  <div class="strapline">
+                Remake the Internet
+                  </div>
+              </div>
+      </div>
+      
+      <div class="span8">
+          <div class="navigation">    
+              <div class="">
+                  <a href="http://blog.zeega.com/about">About </a> <small>*</small>       
+                  <a href="http://zeega.com/team">Team </a> <small>*</small>      
+                  <a href="http://blog.zeega.com" target="_blank">News</a> <small>*</small>
+                  <a href="/register">Sign Up</a> <small>*</small>
+                  <a href="/login">Login</a>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>
+<div class="intro">
+  <div class="row">
+
+    <div class="intro-left">
+
+        <br>
+        <h2>
+        Zeega is revolutionizing web publishing and interactive storytelling for a future beyond blogs.<br><br>
+
+        With Zeega, you can use any media in the cloud, transform the entire screen into your playground, and share your interactive creations with the world.
+        </h2>
+
+    </div>
+
+    <div class="intro-right">
+
+        <a href="#" onclick="fbLogin();" style="width: 200px;" ><img src="http://zeega.com/images/registration/login-facebook.png" width="200px"/></a><br>
+        <a href="{{ path("ZeegaSocialBundle_twitter_connect") }}"><img src="http://zeega.com/images/registration/login-twitter.png" width="200px"/ ></a> <br/>
+    </div>
+
+    <div style="clear: both;"></div>
+
+  </div>
+</div>
+  <!-- Main container. -->
+  <div role="main" id="main"></div>
+
+  <!-- Application source. -->
+
+
+  <!--(if target release)>!--><!--
+  <script src="dist/debug/require.js"></script>
+-->
+  <!--<!(endif)-->
+
+  <!--(if target debug)>
+  <script data-main="/app/config" src="source.js"></script>
+  <!(endif)-->
+
+
+  <!--(if target dummy)-->
+
+    <!-- Footer Begins -->
+        <div class="footer">
+          
+          <div class="row">       
+          <div class="span6">
+              <div class="branding"
+                  <a href="/"><img src="assets/img/zeegaRedWhite.png" alt="zeega-logo" width="134" height="43"></a>
+                  <div class="strapline">
+                Remake the Internet
+                  </div>
+              </div>
+
+              <div class="bottom-line">
+              <br>
+              &copy; Zeega Inc. 2013<br>
+
+              421 Bryant St <small>*</small> San Francisco CA 94107
+
+              <br> 
+
+              <a href="mailto:info@zeega.com">info@zeega.com</a> <small>*</small> <a href="http://twitter.com/zeega" target="_blank">@zeega</a>  
+               
+
+              <br>
+
+              Accelerated with pride <a href="http://twitter.com/mattervc" target="_blank">@mattervc</a>
+
+              <br>
+              <br>
+              <br>              
+            </div>
+          </div>
+
+              
+        </div>        
+
+  <script data-main="/app/config" src="/vendor/js/libs/require.js"></script>
+
+
+</body>
+</html>

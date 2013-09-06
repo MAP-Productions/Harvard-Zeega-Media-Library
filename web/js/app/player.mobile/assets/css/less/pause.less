@@ -1,0 +1,72 @@
+.ZEEGA-pause-overlay {
+
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+
+    h1 {
+        font-size: 4em;
+        text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.5);
+    }
+    h2 {
+        font-size: 1em;
+        opacity: 0.7;
+        margin-top: 10px;
+        text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .ZEEGA-pause-meta {
+        padding: 10px 20px 0 20px;
+    }
+
+    .ZEEGA-pause-footer {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        text-decoration: underline;
+    }
+
+    .mobile-play {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 50%;
+        height: 25%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+}
+
+.ZEEGA-paused-footer {
+    background: rgba(0,0,0,0.75);
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+
+    .menu {
+        padding: 10px;
+        display: inline-block;
+    }
+    .menu img {
+        height: 30px;
+    }
+
+    .tip {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        position: absolute;
+        height: 18px;
+        right: 10px;
+    }
+}

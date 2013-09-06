@@ -1,0 +1,7 @@
+ZeegaEditorBundle_new:
+    pattern: /project/new
+    defaults: { _controller:  ZeegaEditorBundle:Editor:newProject }
+
+ZeegaEditorBundle_editor:
+    pattern: /editor/{id}
+    defaults: { _controller:  ZeegaEditorBundle:Editor:editor }

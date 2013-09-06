@@ -1,0 +1,344 @@
+{% set title = title | default('Unknown') %}
+{% set user_id = user_id | default(-1) %}
+{% set myprojects = myprojects | default('Unknown') %}
+{% set displayname = displayname | default('Unknown') %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" style="height:100%" lang="en-US">
+    <head>
+       	<link rel="icon" type="image/png" href="{{ asset('images/help.ico')}}">
+       	<title>{% block title %}Harvard Environmental Lesson Plan{% endblock %}</title>
+        
+		<meta name="description" content="Harvard Environmental Lesson Plan">
+		<meta name="keywords" content="">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        {% block fbshare %}
+        
+        <!-- FB -->
+		<meta property="og:site_name" content="Harvard Environmental Lesson Plan"/>
+		<meta property="og:title" content="Harvard Environmental Lesson Plan"/>
+		<meta property="og:description" content="Harvard Environmental Lesson Plan."/>
+   		<meta property="og:type" content="website"/>
+   		<meta property="og:url" content="{{hostname}}"/>
+    	<meta property="og:image" content="{{hostname}}images/HELP_Globe_small.png"/>
+		<!-- END FB -->	
+        
+        {% endblock %}
+         
+        {% block stylesheets %}			
+		
+		<link rel="stylesheet" href="{{ asset('css/visualsearch-datauri.css')}}"  type="text/css" media="screen">
+		<link rel="stylesheet" href="{{ asset('js/lib/jquery/ui/css/custom-theme/jquery-ui-1.8.14.custom.css')}}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('css/zeega.fancybox.css')}}" />
+		<link rel="stylesheet" href="{{ asset('js/lib/farbtastic/farbtastic.css')}}" />
+		<link rel="stylesheet" href="{{ asset('js/lib/leaflet/leaflet.css')}}" />
+				
+			{% if app.environment == 'dev' %}
+				<link rel="stylesheet/less" type="text/css" href="{{ asset('css/less/editor/bootstrap.less')}}">
+				<script type="text/javascript" src="{{ asset('js//lib/less-1.3.0.min.js')}}"></script>
+				<script> /* Provisory for dev environment: */ localStorage.clear(); </script>
+			{% else %}
+				<link rel="stylesheet" type="text/css" href="{{ asset('css/zeega.editor.css')}}">
+			{% endif %}
+			
+		<!-- Including Google's Font -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+		
+		{% endblock stylesheets %}
+		
+		{% if app.environment == 'prod' %}
+		    <script type="text/javascript">
+                        var _gaq = _gaq || [];
+                        _gaq.push(['_setAccount', 'UA-37456730-1']);
+                        _gaq.push(['_trackPageview']);
+
+                        (function() {
+                            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                        })();
+
+                    </script>
+		{% endif %}
+
+		<script type="text/javascript" src="{{ asset('js//lib/leaflet/leaflet.js')}}"></script>	
+		<script>
+			if (!window.console) console = {log: function() {}}; 
+			sessionStorage.setItem('directory', '{{directory}}');
+			sessionStorage.setItem('hostname','{{hostname}}');
+			sessionStorage.setItem('userid','{{user_id}}');
+		</script>
+		
+		{% block browser_detection %}
+		<script>
+			var BrowserDetect = {
+				init: function () {
+					this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+					this.version = this.searchVersion(navigator.userAgent)
+						|| this.searchVersion(navigator.appVersion)
+						|| "an unknown version";
+					this.OS = this.searchString(this.dataOS) || "an unknown OS";
+					this.isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/);
+				},
+				searchString: function (data) {
+					for (var i=0;i<data.length;i++)	{
+						var dataString = data[i].string;
+						var dataProp = data[i].prop;
+						this.versionSearchString = data[i].versionSearch || data[i].identity;
+						if (dataString) {
+							if (dataString.indexOf(data[i].subString) != -1)
+								return data[i].identity;
+						}
+						else if (dataProp)
+							return data[i].identity;
+					}
+				},
+				searchVersion: function (dataString) {
+					var index = dataString.indexOf(this.versionSearchString);
+					if (index == -1) return;
+					return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+				},
+				dataBrowser: [
+					{
+						string: navigator.userAgent,
+						subString: "Chrome",
+						identity: "Chrome"
+					},
+					{ 	string: navigator.userAgent,
+						subString: "OmniWeb",
+						versionSearch: "OmniWeb/",
+						identity: "OmniWeb"
+					},
+					{
+						string: navigator.vendor,
+						subString: "Apple",
+						identity: "Safari",
+						versionSearch: "Version"
+					},
+					{
+						prop: window.opera,
+						identity: "Opera",
+						versionSearch: "Version"
+					},
+					{
+						string: navigator.vendor,
+						subString: "iCab",
+						identity: "iCab"
+					},
+					{
+						string: navigator.vendor,
+						subString: "KDE",
+						identity: "Konqueror"
+					},
+					{
+						string: navigator.userAgent,
+						subString: "Firefox",
+						identity: "Firefox"
+					},
+					{
+						string: navigator.vendor,
+						subString: "Camino",
+						identity: "Camino"
+					},
+					{		// for newer Netscapes (6+)
+						string: navigator.userAgent,
+						subString: "Netscape",
+						identity: "Netscape"
+					},
+					{
+						string: navigator.userAgent,
+						subString: "MSIE",
+						identity: "Explorer",
+						versionSearch: "MSIE"
+					},
+					{
+						string: navigator.userAgent,
+						subString: "Gecko",
+						identity: "Mozilla",
+						versionSearch: "rv"
+					},
+					{ 		// for older Netscapes (4-)
+						string: navigator.userAgent,
+						subString: "Mozilla",
+						identity: "Netscape",
+						versionSearch: "Mozilla"
+					}
+				],
+				dataOS : [
+					{
+						string: navigator.platform,
+						subString: "Win",
+						identity: "Windows"
+					},
+					{
+						string: navigator.platform,
+						subString: "Mac",
+						identity: "Mac"
+					},
+					{
+						   string: navigator.userAgent,
+						   subString: "iPhone",
+						   identity: "iPhone/iPod"
+				    },
+					{
+						string: navigator.platform,
+						subString: "Linux",
+						identity: "Linux"
+					}
+				]
+
+			};
+					
+			BrowserDetect.init();
+		</script>
+		{% endblock browser_detection %}
+		
+		{% block head %}
+		{% endblock %}
+    </head>
+  	
+  	<body> 
+		<div id="wrapper">
+	    	{% block header %}
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					<header>
+						<div class="navbar navbar-fixed-top">
+							<div class="navbar-inner">
+								<div class="container">
+									
+									<a class="brand" href="{{path('ZeegaCommunityBundle_home')}}">
+										<img src="{{ asset('images/HELP_Globe_small.png') }}"/>
+									</a>
+									
+									<ul class="nav">
+										
+									
+										
+										<li><a href="http://harvard-lesson-platform.tumblr.com/about" target="_blank">About</a></li>
+
+										
+
+										{% if is_granted('ROLE_ADMIN') %}
+											<li><a href="{{ path('sonata_admin_dashboard') }}" target="_blank">Admin Dashboard</a></li>
+										{% endif %}
+										
+									</ul>
+									
+									<ul class="nav pull-right">
+										<li><a href="{{ path('ZeegaDiscoveryBundle_library') }}">Library</a></li>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+												Lessons
+												<b class="caret"></b>
+											</a>
+											<ul class="dropdown-menu">
+												
+												<li><a class="new-project" href="{{path('ZeegaEditorBundle_new')}}"><i class='zicon-new-document'></i> New Lesson</a></li>
+												<li class="divider"></li>
+												
+												{% for project in myprojects %}
+												<li>
+													<a href="{{ path('ZeegaEditorBundle_editor', { 'id': project.id}) }}">{{project.title}}</a>
+												</li>
+												{% endfor %}
+												
+											</ul>
+										</li><!-- project .dropdown -->
+										
+										<li class="divider-vertical"></li>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class='icon-user icon-white'></i> {{displayname}}<b class="caret"></b></a>
+											<ul class="dropdown-menu">
+
+												<li><a href="{{ path('ZeegaCommunityBundle_dashboard')}}">My Profile</a></li>
+												<li><a href='{{ path('_security_logout')}}'>Logout</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</header>		
+				{% else %}
+					<!-- Header & Nav Begins -->
+					<div class="container header new-section">
+						<div class="row">		
+							<div class="span6">
+								<a href="{{ path('ZeegaCommunityBundle_home')}}"><img src="{{ asset('images/HELP_Globe_home.png') }}" alt="zeega-logo" ></a>
+								
+							</div>
+							
+							<div class="span8">
+								<div class="navigation">	
+									<div>
+										<a href="http://harvard-lesson-platform.tumblr.com/about">About</a>
+											
+                                      	<a href="{{path('fos_user_registration_register')}}">Sign Up</a><a href='{{path('fos_user_security_login')}}'>Login</a>
+									</div>
+								</div>
+							</div>
+					
+						</div>				
+					</div>
+					<!-- Header & Nav Ends -->
+				{% endif %}	
+			{% endblock header %}
+		
+			<div id="editor" class='clearfix'>
+				{% block body %}
+				{% endblock body %}
+	        </div> <!-- #editor -->	
+        </div> <!-- #wrapper -->
+         
+        {% block footer %}
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+		   		<!-- Logged-in Footer Begins -->
+				<div id="footer">
+					<div class="navbar navbar-fixed-bottom" style="position:relative">
+ 						<div class="navbar-inner">
+    						<div class="container">
+								<h5> 
+									&copy; <a href="http://help_platform.zeega.org" target="_blank">Harvard Environmental Learning Platform</a> {{ "now"|date("Y")}} |  Cambridge, MA | <a href="mailto:help_platform@zeega.org">help_platform [at] zeega.org</a>
+								</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Logged-in Footer Ends -->
+
+			{% else %}
+
+				<!-- Non-logged-in Footer Begins -->
+				<div class="footer">
+					<div class="container">
+						<div class="row">
+							<div class="span5">
+								<img src="{{ asset('images/HELP_Globe_home.png') }}" alt="zeega-logo">
+								
+								<p><small>Harvard Environmental Learning Platform</small></p>
+								<p><small>
+									<a href="mailto:help_platform@zeega.org">help_platform@zeega.org</a><br>
+								</small></p>
+							</div>
+							<div class="footer-navigation span3 offset6">
+								<div>
+									<p><a href="{{ path('ZeegaCommunityBundle_home')}}">Home</a></p>
+									<p><a href="http://harvard-lesson-platform.tumblr.com/about">About</a></p>
+									<p><a href="{{ path('fos_user_registration_register')}}">Sign Up</a></p>
+									<p><a href="{{ path('_security_login')}}">Login</a></p>
+									<p><a href="http://harvard-lesson-platform.tumblr.com/about" >FAQ</a></p>
+								</div>
+							</div>
+						</div>						
+					</div>					
+				</div>					
+				<!-- Non-logged-in Footer Ends -->
+			{% endif %}	
+        {% endblock footer %}
+        
+        {% block extras %}{% endblock extras %}
+
+        {% block scripts %}{% endblock scripts %}
+    </body>
+</html>

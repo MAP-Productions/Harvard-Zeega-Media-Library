@@ -1,0 +1,74 @@
+imports:
+    - { resource: "%kernel.root_dir%/config/parameters.ini" }
+
+zeega.parsers:
+    flickr.com:
+        item_parser:
+            regex: "#https?://(?:www\.)?flickr\.com/photos/[^/]+/([0-9]+)#"
+            is_set: false
+            parser_class: Zeega\IngestionBundle\Parser\Flickr\ParserFlickrPhoto
+            parameters:
+                authentication_key: %flickr_key%
+
+    facebook.com:
+        item_parser:
+            regex: /https?:\/\/(?:www\.)?facebook.com\/photo.php\?fbid=([0-9]+)&set=([a-zA-Z0-9]+).([0-9]+).([0-9]+).([0-9]+)*/
+            is_set: false
+            parser_class: Zeega\IngestionBundle\Parser\Facebook\ParserFacebookPhoto
+
+    dropbox.com:
+        item_parser:
+            regex: |\bdropbox\.com\b|
+            parser_class: Zeega\IngestionBundle\Parser\Dropbox\ParserDropboxItem
+
+    instagram.com:
+        item_parser:
+            regex: "#https?://instagram\.com/p/([a-zA-Z0-9\-_]+)/?#"
+            is_set: false
+            parser_class: Zeega\IngestionBundle\Parser\Instagram\ParserInstagramItem
+
+    youtube.com:
+        item_parser:
+            regex: /https?:\/\/(?:www\.)?youtube.*watch\?v=([a-zA-Z0-9\-_]+)/
+            is_set: false
+            parser_class: Zeega\IngestionBundle\Parser\Youtube\ParserYoutubeVideo
+
+    soundcloud.com: #order matters (last regex matches any soundlcoud url)
+        item_parser:
+            regex: /https?:\/\/(?:www\.)?soundcloud.com.*\/sets\/.*/
+            is_set: true
+            parser_class: Zeega\IngestionBundle\Parser\Soundcloud\ParserSoundcloudSet
+
+    giphy.com:
+        item_parser:
+            regex: /https?:\/\/(?:www\.)?giphy.com.*\/gifs\/([a-zA-Z0-9\-_]+)/
+            is_set: false
+            parser_class: Zeega\IngestionBundle\Parser\Giphy\ParserGiphyItem
+        item_parser_full:
+            regex: /https?:\/\/(?:www\.)?giphy.com.*\/embed\/([a-zA-Z0-9\-_]+)\/*/
+            is_set: false
+            parser_class: Zeega\IngestionBundle\Parser\Giphy\ParserGiphyItem
+
+    mapbox.com:
+        item_parser:
+            regex: "#https?:\/\/(?:tiles\.)?mapbox.*\/([^/]+/map/[^/]+)\##"
+            is_set: false
+            parser_class: Zeega\IngestionBundle\Parser\Mapbox\ParserMapboxTiles
+
+    archive.org:
+        item_parser:
+            regex: /http:\/\/(?:www\.)?archive.org\/details.*/
+            is_set: false
+            parser_class: Zeega\IngestionBundle\Parser\InternetArchive\ParserInternetArchive
+
+    tumblr.com:
+        item_parser:
+            regex: /http:\/\/([a-zA-Z0-9\-_]+).tumblr.com\/post\/([a-zA-Z0-9\-_]+)/
+            is_set: false
+            parser_class: Zeega\IngestionBundle\Parser\Tumblr\ParserTumblr
+
+    google.com:
+        item_parser:
+            regex: /http:\/\/(?:books\.)?google.com\/books\?id=([a-zA-Z0-9\-_]+)/
+            is_set: false
+            parser_class: Zeega\IngestionBundle\Parser\GoogleBook\ParserGoogleBook

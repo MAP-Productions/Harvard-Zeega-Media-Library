@@ -1,0 +1,79 @@
+#underlay {
+
+    color: #333;
+    font-size: 1.5em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+
+    .ZEEGA-underlay {
+        height: 100%;
+        position: relative;
+    }
+    #scroller {
+        height: 100%;
+    }
+    
+    .coffin-author {
+        font-size: 0.75em;
+    }
+
+    .bg {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0.15;
+        -webkit-filter: blur(5px);
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    li {
+        white-space: nowrap;
+
+        a {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-size: 0.75em;
+        }
+
+        &.header {
+            padding: 10px 20px;
+            color: #ccc;
+            line-height: 1.5em;
+        }
+
+        &.underlay-citation {
+            font-size: 0.75em;
+        }
+
+        &.spacer {
+            height: 30px;
+        }
+
+        &:last-child {
+        }
+    }
+
+    a {
+        display: block;
+        padding: 10px 20px;
+    }
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+        color: white;
+    }
+}

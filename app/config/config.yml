@@ -1,0 +1,129 @@
+imports:
+    - { resource: parameters.ini }
+    - { resource: security.yml }
+    - { resource: @ZeegaIngestionBundle/Resources/config/services.yml }
+
+framework:
+    #esi:             ~
+    secret:          %secret%
+    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    translator: { fallback: en }
+    default_locale: %locale%
+    trust_proxy_headers: true # change if the application is behind a proxy
+    session:
+        cookie_domain: ~
+        cookie_lifetime:       72000
+        handler_id: session.handler.pdo
+
+parameters:
+    pdo.db_options:
+        db_table:    session
+        db_id_col:   session_id
+        db_data_col: session_value
+        db_time_col: session_time  
+
+services:    
+    pdo:
+        class: PDO
+        arguments:
+            - "%database_type%:dbname=%database_name%;host=%database_host%"
+            - %database_user%
+            - %database_password%
+    session.handler.pdo:
+            class:     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+            arguments: [@pdo, %pdo.db_options%]
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+    globals:
+        hostname: %hostname%
+        directory: %directory%
+        web_directory: %web_directory%
+
+# Assetic Configuration
+assetic:
+    bundles: []
+    debug:          %kernel.debug%
+    use_controller: false
+    filters:
+        cssrewrite: ~
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  utf8
+        mapping_types:
+            geometry: string  
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    encryption: %mailer_encryption%
+    auth_mode:  login
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Zeega\DataBundle\Entity\User
+    from_email:
+        address: %mailer_email%
+        sender_name: Zeega
+    registration:
+        form:
+            handler: zeega_user.form.handler.registration
+            type: zeega_user_registration
+            validation_groups: [ZeegaRegistration]
+        confirmation:
+            enabled:    true
+
+    resetting:
+        form:
+            handler: zeega_user.form.handler.resetting
+        email:
+            template: ZeegaUserBundle:Email:resetting.email.twig
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+        sonata.block.service.text:
+        sonata.block.service.action:
+        sonata.block.service.rss:
+
+# fos rest requirement
+sensio_framework_extra:
+    view:
+        annotations: false
+
+nelmio_solarium:
+    clients:
+        default:
+            host: %solr_host%
+            port: %solr_port%
+            path: %solr_path%
+            core: %solr_core%
+            timeout: 5
+
+
+fos_rest:
+    routing_loader:
+        default_format: json

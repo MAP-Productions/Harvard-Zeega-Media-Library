@@ -1,0 +1,55 @@
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.transition( @property, @sec ) {
+    transition: @property @sec;
+    -webkit-transition: @property @sec;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0, 0.5);
+    background: orangered;
+}
+
+a:link {
+    text-decoration: none;
+    color: #ccc;
+}
+a:visited {
+    text-decoration: none;
+    color: #ccc;
+}
+a:hover {
+    text-decoration: none;
+    color: orangered;
+    .transition( all, 0.5s );
+}
+a:active {
+    text-decoration: none;
+    color: #ccc;
+}

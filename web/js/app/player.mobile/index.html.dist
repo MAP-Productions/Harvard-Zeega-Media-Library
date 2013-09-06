@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- standard viewport tag to set the viewport to the device's width
+		, Android 2.3 devices need this so 100% width works properly and
+		doesn't allow children to blow up the viewport width-->
+	<meta name="viewport" id="vp" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+	<!-- width=device-width causes the iPhone 5 to letterbox the app, so
+		we want to exclude it for iPhone 5 to allow full screen apps -->
+	<meta name="viewport" id="vp" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" />
+	<!-- provide the splash screens for iPhone 5 and previous -->
+	<link href="assets/splashs/splash_1096.png" rel="apple-touch-startup-image" media="(device-height: 568px)">
+	<link href="assets/splashs/splash_iphone_2x.png" rel="apple-touch-startup-image" sizes="640x960" media="(device-height: 480px)">
+
+	<link rel="icon" type="image/png" href="favicon.ico">
+	<title>Zeega</title>
+
+	<!-- Application root. -->
+	<base href="/">
+
+	<script>
+		localStorage.api = 'http://alpha.zeega.org/api';
+		if (!window.console) console = {log: function() {}};
+	</script>
+
+	<!-- Application styles. -->
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/vendor/zeegaplayer/dist/release/css/zeega.css">
+	<link rel="stylesheet" href="assets/css/index.css">
+
+</head>
+
+<body>
+	<!-- Main container. -->
+	<div role="main" id="main">
+		<div id='overlays'></div>
+		<div id='player'></div>
+	</div>
+
+	<!-- Application source. -->
+	<script data-main="app/config" src="assets/js/libs/require.js"></script>
+
+</body>
+</html>

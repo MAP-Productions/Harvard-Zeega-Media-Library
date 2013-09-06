@@ -1,0 +1,22 @@
+<i class="zitem-<%= attr.archive.toLowerCase() %> zitem-30"></i>
+<div class="player-citation-bubble clearfix">
+  <div class="player-citation-content">
+    <h3><%= attr.title %></h3>
+    <div class="content">
+      <span class="citation-subhead">DESCRIPTION:</span> <%= attr.description %>
+    </div>
+    <div class="creator"><span class="citation-subhead">
+      CREATED BY:</span> <%= attr.media_creator_realname %>
+    </div>
+
+  <% if( !_.isNull( attr.media_geo_longitude ) ) { %>
+    <div class="location-created">
+      <span class="citation-subhead">LOCATION:</span> <%= attr.media_geo_longitude %>, <%= attr.media_geo_latitude %>
+    </div>
+  <% } %>
+    <div class="trackback">
+      <a href="<%= attr.attribution_uri %>" target="blank">view original</a>
+    </div>
+  </div>
+  <div class="player-citation-thumb"><img src="<%= attr.thumbnail_url %>" height="100px" width="100px"/></div>
+</div>

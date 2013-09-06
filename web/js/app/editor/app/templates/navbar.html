@@ -1,0 +1,29 @@
+<ul class='pull-left'>
+    <li class='logo'>
+        <a href="#"><img src="assets/img/zeega-logo-header.png"/></a>
+    </li>
+</ul>
+<ul class='pull-right'>
+    <li>
+        <a href="http://www.zeega.org/user/<%= userId %>" target="blank"><i class="icon-user icon-white"></i></a>
+    </li>
+    <li>
+        <a href="#"><i class="icon-folder-open icon-white"></i></a>
+        <ul class="submenu">
+            <li>
+                <a href="/<%= root %>project/new" data-bypass="true" ><i class="icon-file"></i> New Zeega</a>
+            </li>
+            <li class="divider"></li>
+
+            <% _.each( userProjects, function( project) { %>
+                <li>
+                    <a href="/<%= project.id %>"  data-bypass="true" ><%= project.title %></a>
+                </li>
+            <% }); %>
+
+        </ul>
+    </li>
+    <li>
+        <a href="http://www.zeega.org/faq/" target="blank"><i class="icon-question-sign icon-white"></i></a>
+    </li>
+</ul>

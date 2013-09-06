@@ -1,0 +1,21 @@
+<div class="elapsed"></div>
+<div class="soundtrack-waveform"
+<% if ( model ) { %>
+    style=" background: url(<%= attr.thumbnail_url %>);
+    background-size: 100% 100%"
+<% } %>
+></div>
+
+<% if ( model === false ) { %>
+    <span class="instructions-1">Drag audio here to add soundtrack</span>
+    <span class="instructions-2">Drop to add soundtrack</span>
+<% } else { %>
+    <div class="soundtrack-info">
+        <span class="title"><%= attr.title %></span>
+        <span class="time-display"></span>
+    </div>
+    <div class="soundtrack-controls">
+        <a href="#" class="playpause"><i class="icon-play icon-white"></i></a>
+        <a href="#" class="remove"><i class="icon-remove icon-white"></i></a>
+    </div>
+<% } %>

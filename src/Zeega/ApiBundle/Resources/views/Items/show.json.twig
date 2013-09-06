@@ -1,0 +1,17 @@
+{
+"items":
+[
+	{% if item is defined %}
+		{% if editable is not defined %}
+			{% set editable = false %}
+		{% endif %}
+		{% include 'ZeegaApiBundle:Items:base.json.twig' with {'item': item, 'editable':editable} %}
+	{% endif %}
+],
+	"request":
+		{% if request is defined %}
+			{{ request | json_encode | raw}}
+		{% else %}
+		{}
+		{% endif %}
+}

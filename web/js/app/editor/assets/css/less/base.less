@@ -1,0 +1,31 @@
+html {
+    background: url(../img/bg-dark.png);
+}
+
+#main.modal {
+    -webkit-filter: blur(4px);
+}
+
+.left-column {
+    background: url(../img/bg-dark.png);
+    box-shadow: 0 0 10px black;
+    height: 100%;
+    position: absolute;
+    width: 300px;
+    z-index: 10
+}
+
+.right-column {
+    overflow: hidden;
+    background: url(../img/bg-dark.png);
+    height: 100%;
+    left: 300px;
+    min-width: 500px;
+    position: absolute;
+    z-index: 1;
+    width: -webkit-calc(~"100% - 300px");
+}
+
+.ZEEGA-player {
+    z-index: 100;
+}
