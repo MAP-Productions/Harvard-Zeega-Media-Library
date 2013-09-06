@@ -1,0 +1,41 @@
+--------------------------------------------------------------------------------------------------
+- Installation steps
+--------------------------------------------------------------------------------------------------
+
+http://apache.mesi.com.ar/lucene/solr/4.2.0/solr-4.2.0.tgz
+tar -xf solr-4.2.0.tgz 
+apt-get install tomcat7
+apt-get install tomcat7-admin
+mkdir /opt/solr
+cp -R solr-4.2.0/example/solr/* /opt/solr/
+cd /opt/solr
+rm zoo.cfg
+rm README.txt
+mv collection1/ zeega
+cp -R ~/solr-4.2.0/contrib/ .
+cp -R ~/solr-4.2.0/dist/ .
+sparse checkout
+cd /opt/solr
+rm solr.xml
+ln -s /opt/solr/config/solr/solr.xml solr.xml
+cp /opt/solr/config/solr/tomcat-config.xml.dist /opt/solr/config/solr/tomcat-config.xml
+ln -s /opt/solr/config/solr/tomcat-config.xml /etc/tomcat7/Catalina/localhost/solr.xml
+mkdir /opt/solr/zeega/data
+cd zeega/conf/
+
+cp /opt/solr/config/solr/conf/data-config.xml.dist  /opt/solr/config/solr/conf/data-config.xml
+
+vim config/solr/conf/data-config.xml
+ln -s /opt/solr/config/solr/conf/data-config.xml /opt/solr/zeega/conf/data-config.xml
+rm zeega/conf/schema.xml 
+ln -s /opt/solr/config/solr/conf/schema.xml /opt/solr/zeega/conf/schema.xml
+ln -s /opt/solr/dist/solr-4.1.0.war solr.war
+
+rm /opt/solr/zeega/conf/solrconfig.xml
+ln -s /opt/solr/config/solr/conf/solrconfig.xml /opt/solr/zeega/conf/solrconfig.xml
+mkdir /opt/solr/lib
+cp config/solr/zeega-solr.jar /opt/solr/lib/
+
+copy the mysql driver to /usr/share/tomcat7/lib/
+
+sudo chown tomcat7:tomcat7 /opt/solr/zeega/data

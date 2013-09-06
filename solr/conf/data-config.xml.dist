@@ -1,0 +1,39 @@
+<dataConfig>
+<dataSource driver="com.mysql.jdbc.Driver" url="jdbc:mysql://host/db?characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull" user="user" password="pass" batchSize="-1"/>
+  <document>
+    <entity name= "item" 
+            transformer= "org.zeega.solr.ItemTransformer" 
+            query= "select item.*, zuser.* from item inner join zuser on item.user_id = zuser.id WHERE '${dataimporter.request.clean}' != 'false' OR date_updated > '${dataimporter.last_index_time}'">
+      <field column="id" name="id" />
+      <field column="title" name="title" />
+      <field column="description" name="description" />
+      <field column="text" name="text" />
+      <field column="title" name="title" />
+      <field column="headline" name="headline" />
+      <field column="user_id" name="userId" />
+      <field column="date_created" name="dateCreated" />
+      <field column="uri" name="uri" />
+      <field column="attribution_uri" name="attributionUri" />
+      <field column="media_type" name="mediaType" />
+      <field column="layer_type" name="layerType" />
+      <field column="thumbnail_url" name="thumbnailUrl" />
+      <field column="child_items_count" name="childItemsCount" />
+      <field column="media_creator_username" name="mediaCreatorUsername" />
+      <field column="media_creator_realname" name="mediaCreatorRealname" />
+      <field column="archive" name="archive" />
+      <field column="media_date_created" name="mediaDateCreated" />
+      <field column="media_geo_latitude" name="mediaGeoLatitude" />
+      <field column="media_geo_longitude" name="mediaGeoLongitude" />
+      <field column="enabled" name="enabled" />
+      <field column="published" name="published" />
+      <field column="attributes" name="attributes" />
+      <field column="tags" name="tags" />
+      <field column="username" name="username" />
+      <field column="display_name" name="displayName" />
+
+      <entity name="collection" query="select id from collection where child_item_id='${item.id}'">
+        <field column="id" name="parentItem" />
+      </entity>
+     </entity>  
+    </document>
+</dataConfig>
